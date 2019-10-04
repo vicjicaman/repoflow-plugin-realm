@@ -66,19 +66,31 @@ export const listen = async (params, cxt) => {
   if (type === "instanced") {
     const triggerPerf = _.find(performers, p => p.performerid === performerid);
 
+    IO.print(
+      "out",
+      "Update " +
+        triggerPerf.performerid +
+        " in realm " +
+        servicePerf.performerid,
+      cxt
+    );
+
     if (triggerPerf) {
-      console.log("UPDATE DEPEN: " + performerid);
       await Cluster.Performers.Service.update(
         triggerPerf,
         opParams,
         {
           hooks: {
-            post: async (servPerf, triggerPerf, cxt) => {
+            post: async (realmPerf, { type, file }, triggerPerf, cxt) => {
               IO.print(
                 "out",
                 triggerPerf.performerid +
                   " updated for " +
-                  servPerf.performerid,
+                  realmPerf.performerid +
+                  " - " +
+                  type +
+                  "/" +
+                  file,
                 cxt
               );
             }

@@ -35,11 +35,11 @@
     "analyze": "webpack --config webpack.config.js --env.analyze"
   },
   "dependencies": {
-    "@nebulario/core-cluster": "1.70.0-container-runtime-prod",
-    "@nebulario/core-config": "1.70.0-container-runtime-prod",
+    "@nebulario/core-cluster": "link:./../core-cluster",
+    "@nebulario/core-config": "link:./../core-config",
     "@nebulario/core-json": "1.70.1-master",
-    "@nebulario/core-plugin-request": "1.70.0-container-runtime-prod",
-    "@nebulario/core-performer": "1.70.0-container-runtime-prod",
+    "@nebulario/core-plugin-request": "link:./../core-plugin-request",
+    "@nebulario/core-performer": "link:./../core-performer",
     "@nebulario/core-process": "1.70.1-master",
     "babel-runtime": "^6.26.0",
     "fs-extra": "^7.0.1"
