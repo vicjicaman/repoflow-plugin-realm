@@ -12,10 +12,12 @@ const uuidv4 = require("uuid/v4");
 const commonTaskHooks = cxt => ({
   error: async ({ type, file }, { error }, cxt) =>
     IO.print("warning", type + " " + file + "  " + error.toString(), cxt),
+  pre: async ({ type, file }, {}, cxt) => {
+    IO.print("out", type + " " + file, cxt);
+  },
   post: async ({ type, file }, { result }, cxt) => {
     if (result) {
-      IO.print("info", type + " " + file, cxt);
-      result.output && IO.print("out", result.output, cxt);
+      result.output && IO.print("info", result.output, cxt);
       result.warning && IO.print("warning", result.warning, cxt);
     }
   }
@@ -153,7 +155,7 @@ export const init = async (params, cxt) => {
       }
     },
     {},
-    cxt
+    { ...cxt, print: IO.print }
   );
   IO.print("done", "Realm up to date...", cxt);
 };
