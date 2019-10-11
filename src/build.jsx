@@ -3,11 +3,12 @@ import fs from "fs-extra";
 import path from "path";
 import YAML from "yamljs";
 import { exec, spawn, wait } from "@nebulario/core-process";
-import { Operation, IO, Watcher } from "@nebulario/core-plugin-request";
+import { Operation, IO } from "@nebulario/core-plugin-request";
 import * as Config from "@nebulario/core-config";
 import * as Cluster from "@nebulario/core-cluster";
 import * as JsonUtils from "@nebulario/core-json";
 import * as Performer from "@nebulario/core-performer";
+import chokidar from "chokidar";
 
 export const clear = async (params, cxt) => {
   const {
@@ -42,14 +43,22 @@ export const init = async (params, cxt) => {
   } = params;
 
   if (type === "instanced") {
-    Performer.linked(performer, performers)
-      .filter(({ module: { type } }) => type === "config")
-      .forEach(({ performerid }) => {
+    IO.print("out", "Initialize config...", cxt);
+    const lperfs = Performer.linked(performer, performers).filter(
+      ({ module: { type } }) => type === "config"
+    );
+
+    if (lperfs.length === 0) {
+      IO.print("info", "No linked config dependencies...", cxt);
+    } else {
+      lperfs.forEach(({ performerid }) => {
         IO.print("info", performerid + " config linked!", cxt);
         Config.link(folder, performerid);
       });
+    }
 
     await Config.init(folder);
+    IO.print("out", "Initialized!", cxt);
   }
 };
 
@@ -68,22 +77,27 @@ export const start = (params, cxt) => {
     }
   } = params;
 
+  const configPath = path.join(folder, "config.json");
+  const entitiesPath = path.join(folder, "entities");
+
   if (type === "instanced") {
     const startOp = async (operation, cxt) => {
       await build(params, cxt);
-      /*const watchers = Watcher.multiple(
-        ["config.json", "entities/*"],
-        changedPath => {
-          IO.print("warning", changedPath + " changed...", cxt);
+
+      const watcher = chokidar
+        .watch([configPath, entitiesPath], {
+          ignoreInitial: true
+        })
+        .on("all", (event, path) => {
+          IO.print("warning", path.replace(folder, "") + " changed...", cxt);
           build(params, cxt);
-        }
-      );*/
+        });
 
       while (operation.status !== "stopping") {
-        await wait(100);
+        await wait(10);
       }
 
-      //Watcher.stop(watchers);
+      watcher.close();
     };
 
     return {
@@ -124,7 +138,7 @@ const build = async (params, cxt) => {
               ),
             pre: e => e,
             post: ({ type, file }) =>
-              IO.print("info", type + " " + file + " configured ", cxt)
+              IO.print("out", type + " " + file + " configured ", cxt)
           },
           params: { values }
         }
@@ -133,7 +147,7 @@ const build = async (params, cxt) => {
       cxt
     );
 
-    IO.print("done", "Cron job build!", cxt);
+    IO.print("done", "Realm entities build!", cxt);
   } catch (e) {
     IO.print("error", e.toString(), cxt);
   }
