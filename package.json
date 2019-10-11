@@ -1,6 +1,6 @@
 {
   "name": "@nebulario/repoflow-plugin-realm",
-  "version": "1.70.0-master",
+  "version": "1.70.0-bundle-cluster-prod",
   "description": "Kubernetes realm plugin",
   "main": "./dist/index.js",
   "repository": "github.com:vicjicaman/repoflow-plugin-realm.git",
@@ -35,11 +35,11 @@
     "analyze": "webpack --config webpack.config.js --env.analyze"
   },
   "dependencies": {
-    "@nebulario/core-cluster": "link:./../core-cluster",
-    "@nebulario/core-config": "link:./../core-config",
+    "@nebulario/core-cluster": "1.70.0-bundle-cluster-prod",
+    "@nebulario/core-config": "1.70.0-bundle-cluster-prod",
     "@nebulario/core-json": "1.70.1-master",
     "@nebulario/core-performer": "1.70.0-master",
-    "@nebulario/core-plugin-request": "link:./../core-plugin-request",
+    "@nebulario/core-plugin-request": "1.70.0-bundle-cluster-prod",
     "@nebulario/core-process": "1.70.1-master",
     "babel-runtime": "^6.26.0",
     "chokidar": "^3.2.1",
