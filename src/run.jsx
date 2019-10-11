@@ -54,6 +54,8 @@ export const clear = async (params, cxt) => {
 export const listen = async (params, cxt) => {
   const {
     performerid, // TRIGGER DEP
+    event: eventid,
+    taskid,
     operation: {
       params: opParams,
       params: {
@@ -66,40 +68,45 @@ export const listen = async (params, cxt) => {
   } = params;
 
   if (type === "instanced") {
-    const triggerPerf = _.find(performers, p => p.performerid === performerid);
+    if (taskid === "build" && eventid === "done") {
+      const triggerPerf = _.find(
+        performers,
+        p => p.performerid === performerid
+      );
 
-    IO.print(
-      "out",
-      "Update " +
-        triggerPerf.performerid +
-        " in realm " +
-        servicePerf.performerid,
-      cxt
-    );
-
-    if (triggerPerf) {
-      await Cluster.Performers.Service.update(
-        triggerPerf,
-        opParams,
-        {
-          hooks: {
-            post: async (realmPerf, { type, file }, triggerPerf, cxt) => {
-              IO.print(
-                "out",
-                triggerPerf.performerid +
-                  " updated for " +
-                  realmPerf.performerid +
-                  " - " +
-                  type +
-                  "/" +
-                  file,
-                cxt
-              );
-            }
-          }
-        },
+      IO.print(
+        "out",
+        "Update " +
+          triggerPerf.performerid +
+          " in realm " +
+          servicePerf.performerid,
         cxt
       );
+
+      if (triggerPerf) {
+        await Cluster.Performers.Service.update(
+          triggerPerf,
+          opParams,
+          {
+            hooks: {
+              post: async (realmPerf, { type, file }, triggerPerf, cxt) => {
+                IO.print(
+                  "out",
+                  triggerPerf.performerid +
+                    " updated for " +
+                    realmPerf.performerid +
+                    " - " +
+                    type +
+                    "/" +
+                    file,
+                  cxt
+                );
+              }
+            }
+          },
+          cxt
+        );
+      }
     }
   }
 };

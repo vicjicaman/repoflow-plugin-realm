@@ -39,7 +39,7 @@
     "@nebulario/core-config": "link:./../core-config",
     "@nebulario/core-json": "1.70.1-master",
     "@nebulario/core-performer": "1.70.0-master",
-    "@nebulario/core-plugin-request": "1.70.10-master",
+    "@nebulario/core-plugin-request": "link:./../core-plugin-request",
     "@nebulario/core-process": "1.70.1-master",
     "babel-runtime": "^6.26.0",
     "chokidar": "^3.2.1",
