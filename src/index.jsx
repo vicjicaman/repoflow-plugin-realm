@@ -1,31 +1,5 @@
-import { IO, Plugin } from "@nebulario/core-plugin-request";
-
+import * as Version from "./version";
 import * as Dependencies from "./dependencies";
 import * as Build from "./build";
-import * as Run from "./run";
-import { publish } from "./publish";
 
-(async () => {
-  await Plugin.run("realm", {
-    dependencies: {
-      list: Dependencies.list,
-      sync: Dependencies.sync
-    },
-    run: {
-      listen: Run.listen,
-      transform: Run.transform,
-      clear: Run.clear,
-      init: Run.init,
-      start: Run.start
-    },
-    build: {
-      clear: Build.clear,
-      init: Build.init,
-      start: Build.start
-    },
-    publish
-  });
-})().catch(e => {
-  IO.sendEvent("plugin.fatal", { data: e.message });
-  throw e;
-});
+export { Version, Dependencies, Build };
