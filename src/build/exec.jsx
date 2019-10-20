@@ -1,11 +1,7 @@
-import _ from "lodash";
-import fs from "fs-extra";
 import path from "path";
-import { exec, spawn, wait } from "@nebulario/core-process";
-import * as Performer from "@nebulario/core-performer";
+import { wait } from "@nebulario/core-process";
 import * as Config from "@nebulario/core-config";
 import * as Cluster from "@nebulario/core-cluster";
-import * as JsonUtil from "@nebulario/core-json";
 import chokidar from "chokidar";
 
 export const start = async (operation, params, cxt) => {
