@@ -12,13 +12,29 @@ const handlers = {
 };
 
 export const start = async (operation, params, cxt) => {
+  const {
+    params: {
+      performer: {
+        code: {
+          paths: {
+            absolute: { folder }
+          }
+        }
+      },
+      instance,
+      config: { cluster }
+    }
+  } = operation;
+
   await Cluster.Tasks.Run.transform(
-    operation,
+    folder,
     {},
     {
-      handlers
+      handlers,
+      instance,
+      cluster
     },
-    cxt
+    { ...cxt, operation }
   );
 
   operation.print("out", "Realm entities transformed...", cxt);

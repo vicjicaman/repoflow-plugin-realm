@@ -1,5 +1,24 @@
 import { Tasks } from "@nebulario/core-cluster";
 
 export const listener = async (evt, cxt) => {
-  await Tasks.Run.listen(cxt.operation, evt, {}, cxt);
+  const {
+    params: {
+      performer: {
+        code: {
+          paths: {
+            absolute: { folder }
+          }
+        }
+      },
+      instance,
+      config: { cluster }
+    }
+  } = operation;
+
+  await Tasks.Run.listen(
+    folder,
+    evt,
+    { instance, cluster },
+    { ...cxt, operation }
+  );
 };

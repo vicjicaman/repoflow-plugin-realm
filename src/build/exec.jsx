@@ -60,7 +60,9 @@ const builder = async (operation, params, cxt) => {
           absolute: { folder }
         }
       }
-    }
+    },
+    instance,
+    config: { cluster }
   } = params;
 
   operation.print("out", "Start building config...", cxt);
@@ -68,10 +70,13 @@ const builder = async (operation, params, cxt) => {
   const values = Config.load(folder);
 
   operation.print("out", "Config loaded...", cxt);
+
   await Cluster.Tasks.Build.exec(
-    operation,
+    folder,
     { values },
     {
+      instance,
+      cluster,
       handlers: {
         error: ({ entity: { type, file } }, error, cxt) =>
           operation.print(
@@ -83,7 +88,7 @@ const builder = async (operation, params, cxt) => {
           operation.print("out", type + " " + file + " configured ", cxt)
       }
     },
-    cxt
+    { ...cxt, operation }
   );
 
   operation.print("out", "Realm entities build!", cxt);
