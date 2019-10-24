@@ -13,12 +13,7 @@ export const listener = async (evt, cxt) => {
       instance,
       config: { cluster }
     }
-  } = operation;
+  } = cxt.operation;
 
-  await Tasks.Run.listen(
-    folder,
-    evt,
-    { instance, cluster },
-    { ...cxt, operation }
-  );
+  await Tasks.Run.listen(folder, evt, { instance, cluster }, cxt);
 };

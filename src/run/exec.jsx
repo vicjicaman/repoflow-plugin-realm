@@ -1,3 +1,4 @@
+import fs from "fs";
 import path from "path";
 import { wait } from "@nebulario/core-process";
 import * as Config from "@nebulario/core-config";
@@ -14,7 +15,13 @@ export const start = async (operation, params, cxt) => {
           absolute: { folder }
         }
       }
-    }
+    },
+    instance: {
+      paths: {
+        absolute: { folder: instanceFolder }
+      }
+    },
+    config
   } = params;
 
   if (type === "instanced") {
@@ -23,8 +30,6 @@ export const start = async (operation, params, cxt) => {
     while (operation.status !== "stop") {
       await wait(10);
     }
-
-
   }
 };
 
