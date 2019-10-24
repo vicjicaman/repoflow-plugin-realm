@@ -24,12 +24,10 @@ export const start = async (operation, params, cxt) => {
     config
   } = params;
 
-  if (type === "instanced") {
-    await runner(operation, params, cxt);
+  await runner(operation, params, cxt);
 
-    while (operation.status !== "stop") {
-      await wait(10);
-    }
+  while (operation.status !== "stop") {
+    await wait(10);
   }
 };
 
