@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@nebulario/core-cluster@1.70.6-plugin-service-prod":
-  version "1.70.6-plugin-service-prod"
-  resolved "https://registry.yarnpkg.com/@nebulario/core-cluster/-/core-cluster-1.70.6-plugin-service-prod.tgz#e560bba8e72fc317b653f6cc55f71e426b9f71e0"
-  integrity sha512-eZS883GPS1/Z8BilJpMhHmd8juyPSl4CNJFJ0z5vpOIXyw2bdwHYB+FFIyxoIQAGMkS/qJGLfCu5bEDF917lgw==
+"@nebulario/core-cluster@1.70.4-master":
+  version "1.70.4-master"
+  resolved "https://registry.yarnpkg.com/@nebulario/core-cluster/-/core-cluster-1.70.4-master.tgz#a255fa8f1a46b78a349360f71ec8a2078fe96b8e"
+  integrity sha512-o0lp2pmXlNY5zv9TtghlGy1BoicUoObvR0AXmlMC3MP2Fc8B3wp4ypfGqlDj2gt+byrU3g6uaeIxE2b1w7BNWg==
   dependencies:
     "@nebulario/core-config" "1.70.5-master"
     "@nebulario/core-json" "1.70.1-master"
     "@nebulario/core-process" "1.70.1-master"
-    "@nebulario/core-remote" "1.70.1-plugin-service-prod"
+    "@nebulario/core-remote" "1.70.0-master"
     "@nebulario/core-repository" "1.70.1-master"
     axios "^0.19.0"
     babel-runtime "^6.26.0"
@@ -77,10 +77,10 @@
     lodash "^4.17.4"
     uuid "^3.3.2"
 
-"@nebulario/core-remote@1.70.1-plugin-service-prod":
-  version "1.70.1-plugin-service-prod"
-  resolved "https://registry.yarnpkg.com/@nebulario/core-remote/-/core-remote-1.70.1-plugin-service-prod.tgz#ac5347298c2c2e3a59521de04dcd6badcdc7a5d9"
-  integrity sha512-qznB1sdNm+BwXb5H4byCJoM3hsnYmjuhIfFnqjQ4b6W3RDG+7/0O9q00TSgPeudoHR10T0i25q9ya3nMrS+Kvg==
+"@nebulario/core-remote@1.70.0-master":
+  version "1.70.0-master"
+  resolved "https://registry.yarnpkg.com/@nebulario/core-remote/-/core-remote-1.70.0-master.tgz#52c2126bb6a112b52323c90bffe7f439b89f4c27"
+  integrity sha512-9P0RTOU3YA6iA4RnLtkNGkSEpXUdkB7dOywoeqwhLH/kUnL1Xyw0n8+GBWcHNxymjEyYlNaShrxuu1flQNpY7A==
   dependencies:
     "@nebulario/core-json" "1.70.1-master"
     "@nebulario/core-process" "1.70.1-master"
@@ -98,10 +98,10 @@
   dependencies:
     "@nebulario/core-process" "1.70.1-master"
 
-"@nebulario/repoflow-plugin-config@1.70.1-plugin-service-prod":
-  version "1.70.1-plugin-service-prod"
-  resolved "https://registry.yarnpkg.com/@nebulario/repoflow-plugin-config/-/repoflow-plugin-config-1.70.1-plugin-service-prod.tgz#b1c1bfea36a4cd4f9c786d6fbd7e4fd53897f461"
-  integrity sha512-r42qUjwCj764H6Oaz+tuiUnM2hrUaoD/KeA5d4ke6BbIEcONRlK0xYu3aw/XaOIk9CHKcgEAS+aw16NvIX9SNQ==
+"@nebulario/repoflow-plugin-config@1.70.12-master":
+  version "1.70.12-master"
+  resolved "https://registry.yarnpkg.com/@nebulario/repoflow-plugin-config/-/repoflow-plugin-config-1.70.12-master.tgz#5d82ea98524977dbf031524c6c484ecca4d85f0a"
+  integrity sha512-K7p000nkbYcVlmITCPI1AOdAQT2gM81erTZyZxRnhXeedUlq5jUGQE7s0993PeM/98e67yM4WDlvc8KDVX6gWA==
   dependencies:
     "@nebulario/core-config" "1.70.5-master"
     "@nebulario/core-json" "1.70.1-master"
