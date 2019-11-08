@@ -35,7 +35,7 @@
     "analyze": "webpack --config webpack.config.js --env.analyze"
   },
   "dependencies": {
-    "@nebulario/core-cluster": "link:/home/victor/repoflow/app/data/repoflow/workspace/workspaces/repoflow.com/instances/common-cluster-deploy/modules/core-cluster",
+    "@nebulario/core-cluster": "1.70.5-master",
     "@nebulario/repoflow-plugin-config": "1.70.12-master",
     "@nebulario/core-config": "1.70.5-master",
     "@nebulario/core-json": "1.70.1-master",
