@@ -1,6 +1,6 @@
 {
   "name": "@nebulario/repoflow-plugin-realm",
-  "version": "1.70.0-config-build-server-prod",
+  "version": "1.70.4-master",
   "description": "Kubernetes realm plugin",
   "main": "./dist/index.js",
   "repository": "github.com:vicjicaman/repoflow-plugin-realm.git",
