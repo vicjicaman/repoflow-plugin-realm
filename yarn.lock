@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@nebulario/core-cluster@1.70.5-master":
-  version "1.70.5-master"
-  resolved "https://registry.yarnpkg.com/@nebulario/core-cluster/-/core-cluster-1.70.5-master.tgz#1865937597f1b4b517ecee88a9722ec2833601f7"
-  integrity sha512-shb377UU1XoD4X9UMCLaDUmEoOHmg6weKMvrwsKPdto0gpYOju/rwyH4kEQXfVTnATy3Ig6snSOMBqEfSGW8bQ==
+"@nebulario/core-cluster@1.70.6-master":
+  version "1.70.6-master"
+  resolved "https://registry.yarnpkg.com/@nebulario/core-cluster/-/core-cluster-1.70.6-master.tgz#5630e700a7f23fda32cb2a5a4a1f1a4bf987b954"
+  integrity sha512-a1JSZiyXHGRHhWJI5Kr+t9pEIZ7NcaCrTTB4J9dSl1xKSUNMqwiScphRGFC7GtkhGIlRSYT7A6awmakBgZmW9g==
   dependencies:
     "@nebulario/core-config" "1.70.5-master"
     "@nebulario/core-json" "1.70.1-master"
